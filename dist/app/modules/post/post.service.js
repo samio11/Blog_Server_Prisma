@@ -63,4 +63,18 @@ const getAPost = (id) => __awaiter(void 0, void 0, void 0, function* () {
         });
     }));
 });
-exports.postServices = { createPost, getAllPost, getAPost };
+const updatePost = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield db_1.prisma.user.update({ where: { id }, data: payload });
+    return result;
+});
+const deletePost = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield db_1.prisma.user.delete({ where: { id } });
+    return result;
+});
+exports.postServices = {
+    createPost,
+    getAllPost,
+    getAPost,
+    updatePost,
+    deletePost,
+};

@@ -42,4 +42,31 @@ const getAPost = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void
         data: result,
     });
 }));
-exports.postController = { createPost, getAllPost, getAPost };
+const updateAPost = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req === null || req === void 0 ? void 0 : req.params;
+    const payload = req === null || req === void 0 ? void 0 : req.body;
+    const result = yield post_service_1.postServices.updatePost(id, payload);
+    (0, sendResponse_1.sendResponse)(res, {
+        success: true,
+        message: "POST Updated Done",
+        statusCode: 200,
+        data: result,
+    });
+}));
+const deleteAPost = (0, catchAsync_1.catchAsync)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req === null || req === void 0 ? void 0 : req.params;
+    const result = yield post_service_1.postServices.deletePost(id);
+    (0, sendResponse_1.sendResponse)(res, {
+        success: true,
+        message: "POST Delete Done",
+        statusCode: 200,
+        data: result,
+    });
+}));
+exports.postController = {
+    createPost,
+    getAllPost,
+    getAPost,
+    updateAPost,
+    deleteAPost,
+};
