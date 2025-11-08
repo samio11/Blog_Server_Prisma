@@ -38,7 +38,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
+exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.PostScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/index-browser"));
 exports.Decimal = runtime.Decimal;
 exports.NullTypes = {
@@ -65,7 +65,8 @@ exports.JsonNull = runtime.objectEnumValues.instances.JsonNull;
  */
 exports.AnyNull = runtime.objectEnumValues.instances.AnyNull;
 exports.ModelName = {
-    User: 'User'
+    User: 'User',
+    Post: 'Post'
 };
 /*
  * Enums
@@ -86,6 +87,18 @@ exports.UserScalarFieldEnum = {
     phone: 'phone',
     status: 'status',
     isVerified: 'isVerified',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+exports.PostScalarFieldEnum = {
+    id: 'id',
+    title: 'title',
+    content: 'content',
+    thumbnail: 'thumbnail',
+    isFeatured: 'isFeatured',
+    authorId: 'authorId',
+    tags: 'tags',
+    views: 'views',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
 };
