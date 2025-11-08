@@ -1,0 +1,25 @@
+/*
+  Warnings:
+
+  - You are about to drop the column `age` on the `User` table. All the data in the column will be lost.
+  - A unique constraint covering the columns `[email]` on the table `User` will be added. If there are existing duplicate values, this will fail.
+  - Added the required column `gender` to the `User` table without a default value. This is not possible if the table is not empty.
+  - Added the required column `phone` to the `User` table without a default value. This is not possible if the table is not empty.
+
+*/
+-- CreateEnum
+CREATE TYPE "EGender" AS ENUM ('MALE', 'FEMALE');
+
+-- CreateEnum
+CREATE TYPE "EStatus" AS ENUM ('ACTIVE', 'IN_ACTIVE', 'BLOCKED');
+
+-- AlterTable
+ALTER TABLE "User" DROP COLUMN "age",
+ADD COLUMN     "gender" "EGender" NOT NULL,
+ADD COLUMN     "isVerified" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "phone" TEXT NOT NULL,
+ADD COLUMN     "photoUrl" TEXT,
+ADD COLUMN     "status" "EStatus" NOT NULL DEFAULT 'ACTIVE';
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");

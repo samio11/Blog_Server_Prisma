@@ -1,0 +1,35 @@
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id String @id @default(uuid())
+  name String
+  email String @unique()
+  password String
+  gender EGender
+  photoUrl String?
+  phone String
+   status EStatus @default(ACTIVE)
+  isVerified Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum EGender {
+  MALE
+  FEMALE
+}
+
+enum EStatus {
+  ACTIVE
+  IN_ACTIVE
+  BLOCKED
+}
