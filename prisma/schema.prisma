@@ -17,8 +17,23 @@ model User{
   gender EGender
   photoUrl String?
   phone String
-   status EStatus @default(ACTIVE)
+  status EStatus @default(ACTIVE)
   isVerified Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts Post[]
+}
+
+model Post{
+  id String @id @default(uuid())
+  title String
+  content String?
+  thumbnail String?
+  isFeatured Boolean @default(false)
+  authorId String
+  tags String[]
+  views Int @default(0)
+  author User @relation(fields:[authorId],references:[id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
